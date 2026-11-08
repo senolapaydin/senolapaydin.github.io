@@ -1,4 +1,4 @@
-# Apaydin Neuro Tools
+# Neuro Tools
 
 Free interactive teaching tools for clinical neuroanatomy, by Senol Apaydin, MD.
 Each tool runs in the browser, with nothing to install.
