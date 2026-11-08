@@ -47,7 +47,7 @@ body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--f-body);
 .group header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
 .group h2{font:700 22px/1.1 var(--f-display);letter-spacing:-.01em;margin:0}
 .group header p{margin:0;font-size:14px;color:var(--muted)}
-.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(min(100%,400px),1fr))}
 
 .card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;color:inherit;text-decoration:none;min-width:0;transition:border-color .15s, transform .15s}
 a.card:hover{border-color:var(--accent);transform:translateY(-2px)}
@@ -63,7 +63,7 @@ a.card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .pill.live{color:var(--accent)}
 .pill.dev{color:var(--muted)}
 .go{color:var(--accent);font-weight:600}
-.card.soon{opacity:.82}
+.card.soon .body{opacity:.82}
 .card.soon .go{color:var(--muted);font-weight:500}
 
 .feature{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
@@ -102,7 +102,7 @@ footer a{color:var(--accent)}
   </header>
 
   <section class="group" aria-labelledby="g-vasc">
-    <header><h2 id="g-vasc">Neurovascular</h2><p>Vessels and territories</p></header>
+    <header><h2 id="g-vasc">Neurovascular</h2><p>Vessels, territories, flow and ultrasound</p></header>
     <div class="grid">
 
       <a class="card feature wide" href="stroke-explorer/">
@@ -114,6 +114,18 @@ footer a{color:var(--accent)}
           <div class="meta"><span class="pill live">Beta 0.9.41</span><span class="go">Open →</span></div>
         </div>
       </a>
+
+      <div class="card soon" aria-disabled="true">
+        <div class="film shot"><img src="assets/willis-flow-explorer.jpg" width="1200" height="525" loading="lazy" alt="Willis Flow Explorer: right ICA occlusion, with collateral flow through the anterior and posterior communicating arteries and the ophthalmic artery, and an axial map of the territory reached by collaterals"></div>
+        <div class="body"><h3>Willis Flow Explorer</h3><p>Blood flow from the aortic arch to the brain, computed from a physiological model and drawn like 4D flow MRI. Close a vessel and watch the collaterals take over.</p>
+          <div class="meta"><span class="pill dev">In development</span><span class="go">Soon</span></div></div>
+      </div>
+
+      <div class="card soon" aria-disabled="true">
+        <div class="film shot"><img src="assets/transcranial-doppler-explorer.jpg" width="1200" height="447" loading="lazy" alt="Transcranial Doppler Explorer: right temporal window on an axial MRI with the beam on the M1 segment, power M-mode by depth and the Doppler spectrum"></div>
+        <div class="body"><h3>Transcranial Doppler Explorer</h3><p>Aim the probe, turn the depth and read the spectrum, from a model of the circle of Willis.</p>
+          <div class="meta"><span class="pill dev">In development</span><span class="go">Soon</span></div></div>
+      </div>
 
     </div>
   </section>

@@ -8,6 +8,8 @@ Each tool runs in the browser, with nothing to install.
 | Tool | Folder | Status |
 |---|---|---|
 | Stroke Territory Explorer | [`stroke-explorer/`](stroke-explorer/) | Beta |
+| Willis Flow Explorer | – | In development |
+| Transcranial Doppler Explorer | – | In development |
 
 ## Licence
 
