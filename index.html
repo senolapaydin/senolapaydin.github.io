@@ -1,0 +1,195 @@
+<meta name="claude:viewport-fit-sides" content="cover">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Apaydin Neuro Tools</title>
+<meta name="description" content="Free interactive teaching tools for clinical neuroanatomy by Senol Apaydin, MD.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: the reading-room look of the Stroke Territory Explorer, as a front desk — short masthead, then the tools as film-strip cards grouped by field, then the shared credit and licence. */
+:root{
+  --bg:#edf1f2; --surface:#fbfcfc; --ink:#111a1e; --muted:#55646b; --line:#d1dadd;
+  --accent:#0a6f80; --accent-ink:#ffffff; --soft:#dfe8ea;
+  --film:#07090a; --film-line:#252d32; --film-ink:#93a0a7; --glow:#60dcec; --occl:#ff6b3d;
+  --f-display:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d1113; --surface:#141a1d; --ink:#e2e9ec; --muted:#93a1a8; --line:#253035;
+    --accent:#5ec6d4; --accent-ink:#04171b; --soft:#1a2327; --film-line:#2c353b; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d1113; --surface:#141a1d; --ink:#e2e9ec; --muted:#93a1a8; --line:#253035;
+  --accent:#5ec6d4; --accent-ink:#04171b; --soft:#1a2327; --film-line:#2c353b; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--f-body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1180px;margin:0 auto;padding-block:28px 56px;display:flex;flex-direction:column;gap:40px}
+.eyebrow{font:500 11px/1.35 var(--f-mono);text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin:0}
+.mast{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px 48px;align-items:end;border-bottom:1px solid var(--line);padding-bottom:28px}
+.mast h1{font:700 clamp(34px,5vw,58px)/.98 var(--f-display);letter-spacing:-.03em;margin:10px 0 14px;text-wrap:balance}
+.mast .lede{margin:0;color:var(--muted);max-width:58ch;font-size:17px}
+.who{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--muted)}
+.who b{color:var(--ink);font-weight:600;font-size:15px}
+.who .tagrow{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.tag{font:500 11px/1 var(--f-mono);letter-spacing:.04em;border:1px solid var(--line);border-radius:999px;padding:6px 9px;color:var(--muted);background:var(--surface)}
+@media (max-width:760px){.mast{grid-template-columns:minmax(0,1fr)}}
+
+.group{display:flex;flex-direction:column;gap:14px}
+.group header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.group h2{font:700 22px/1.1 var(--f-display);letter-spacing:-.01em;margin:0}
+.group header p{margin:0;font-size:14px;color:var(--muted)}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+.card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;color:inherit;text-decoration:none;min-width:0;transition:border-color .15s, transform .15s}
+a.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+a.card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.film{background:var(--film);border-bottom:1px solid var(--film-line);aspect-ratio:16/7;max-width:100%;position:relative;display:flex;align-items:center;justify-content:center}
+.film svg{width:62%;height:auto;max-height:88%;display:block}
+.film .seq{position:absolute;top:8px;left:10px;font:500 10px/1 var(--f-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--film-ink)}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.body h3{font:700 19px/1.15 var(--f-display);margin:0;letter-spacing:-.01em}
+.body p{margin:0;font-size:14.5px;color:var(--muted)}
+.meta{margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;gap:10px;font:500 11.5px var(--f-mono);color:var(--muted)}
+.pill{border-radius:999px;padding:4px 8px;font:500 10.5px/1 var(--f-mono);letter-spacing:.05em;text-transform:uppercase;border:1px solid currentColor}
+.pill.live{color:var(--accent)}
+.pill.dev{color:var(--muted)}
+.go{color:var(--accent);font-weight:600}
+.card.soon{opacity:.82}
+.card.soon .go{color:var(--muted);font-weight:500}
+
+.feature{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+.feature .film{aspect-ratio:auto;min-height:220px;border-bottom:0;border-right:1px solid var(--film-line)}
+.feature .film svg{width:78%}
+.feature .body{padding:22px 24px}
+.feature .body h3{font-size:26px}
+.feature .body p{font-size:15.5px}
+.feature ul{margin:4px 0 0;padding-left:18px;font-size:14.5px;color:var(--muted);display:flex;flex-direction:column;gap:3px}
+@media (max-width:760px){.feature{grid-template-columns:minmax(0,1fr)}.feature .film{border-right:0;border-bottom:1px solid var(--film-line);min-height:170px}}
+
+.note{font-size:13px;color:var(--muted);background:var(--soft);border-radius:10px;padding:12px 14px;max-width:80ch}
+footer{border-top:1px solid var(--line);padding-top:16px;font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+footer p{margin:0;max-width:96ch}
+footer a{color:var(--accent)}
+@media (prefers-reduced-motion: reduce){a.card{transition:none}a.card:hover{transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="mast">
+    <div>
+      <p class="eyebrow">Interactive teaching models · neurology</p>
+      <h1>Apaydin Neuro Tools</h1>
+      <p class="lede">Small, free tools for learning clinical neuroanatomy at the bedside and in the reading room. Each runs in the browser, with nothing to install.</p>
+    </div>
+    <div class="who">
+      <b>Senol Apaydin, MD</b>
+      <span>Neurology · Switzerland</span>
+      <div class="tagrow"><span class="tag">GPL-3.0</span><span class="tag">no login</span><span class="tag">works offline as a file</span></div>
+    </div>
+  </header>
+
+  <section class="group" aria-labelledby="g-vasc">
+    <header><h2 id="g-vasc">Neurovascular</h2><p>Vessels, territories and ultrasound</p></header>
+    <div class="grid">
+
+      <a class="card feature" href="stroke-explorer/">
+        <div class="film"><span class="seq">MRA · Circle of Willis</span>
+          <svg viewBox="0 0 320 140" fill="none" stroke-linecap="round" aria-hidden="true">
+            <g stroke="#c4cdd2" stroke-width="2.4">
+              <path d="M160 132 V98"/><path d="M160 98 C138 88 120 84 98 84"/><path d="M160 98 C182 88 200 84 222 84"/>
+              <path d="M98 84 C92 64 100 46 112 36"/><path d="M222 84 C228 64 220 46 208 36"/>
+              <path d="M112 36 C128 30 146 28 156 22"/><path d="M208 36 C192 30 174 28 164 22"/><path d="M156 22 H164"/>
+              <path d="M112 36 C84 34 60 30 34 20"/><path d="M98 84 C74 92 52 104 30 118"/><path d="M222 84 C246 92 268 104 290 118"/>
+              <path d="M156 22 C150 12 146 8 140 4"/><path d="M164 22 C170 12 174 8 180 4"/>
+            </g>
+            <path d="M208 36 C236 34 260 30 286 20" stroke="#ff6b3d" stroke-width="3"/>
+            <circle cx="214" cy="35.6" r="5" fill="#ff6b3d" stroke="#07090a" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>Stroke Territory Explorer</h3>
+          <p>Occlude an artery on the Circle of Willis and its territory lights up on real MRI slices from a published 3D atlas of 1,298 stroke patients. Read the matching syndrome, or work backwards from the findings.</p>
+          <ul><li>26 territories and border zones, every statement sourced with page numbers</li><li>21 classic syndromes as presets, case mode, shareable views</li><li>ASPECTS regions on the two scoring levels, with the score for each MCA occlusion</li></ul>
+          <div class="meta"><span class="pill live">Beta 0.9.41</span><span class="go">Open →</span></div>
+        </div>
+      </a>
+
+      <div class="card soon" aria-disabled="true">
+        <div class="film"><span class="seq">TCD · spectrum</span>
+          <svg viewBox="0 0 200 80" fill="none" aria-hidden="true"><path d="M6 66 H194" stroke="#252d32"/><path d="M6 66 C14 66 16 18 24 18 C30 18 32 46 40 50 C50 54 56 58 66 66 C74 66 76 18 84 18 C90 18 92 46 100 50 C110 54 116 58 126 66 C134 66 136 18 144 18 C150 18 152 46 160 50 C170 54 176 58 186 66" stroke="#60dcec" stroke-width="2.2" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="body"><h3>Transcranial Doppler Explorer</h3><p>Transcranial Doppler of the basal arteries: windows, vessels and their flow spectra.</p>
+          <div class="meta"><span class="pill dev">In development</span><span class="go">Soon</span></div></div>
+      </div>
+
+      <div class="card soon" aria-disabled="true">
+        <div class="film"><span class="seq">Flow · collaterals</span>
+          <svg viewBox="0 0 200 80" fill="none" stroke-linecap="round" aria-hidden="true"><path d="M100 76 V54 M100 54 C80 48 64 46 50 46 M100 54 C120 48 136 46 150 46 M50 46 C46 32 56 20 70 14 M150 46 C154 32 144 20 130 14 M70 14 H130" stroke="#c4cdd2" stroke-width="2.2"/><path d="M58 44 L82 44 M126 18 L104 16" stroke="#60dcec" stroke-width="2.2" stroke-dasharray="2 6"/></svg>
+        </div>
+        <div class="body"><h3>Willis Flow Explorer</h3><p>Flow through the Circle of Willis and its collaterals.</p>
+          <div class="meta"><span class="pill dev">In development</span><span class="go">Soon</span></div></div>
+      </div>
+
+      <div class="card soon" aria-disabled="true">
+        <div class="film"><span class="seq">DSA · arterial phase</span>
+          <svg viewBox="0 0 200 80" fill="none" stroke-linecap="round" aria-hidden="true"><g stroke="#d6dee2" stroke-width="2"><path d="M96 78 C96 60 92 50 100 40 C108 30 104 20 96 12"/><path d="M100 40 C120 36 140 30 160 20"/><path d="M120 35 C126 26 128 18 136 10"/><path d="M140 29 C150 34 160 42 172 46"/><path d="M98 22 C84 18 70 14 56 6"/></g></svg>
+        </div>
+        <div class="body"><h3>Cerebral DSA Simulator</h3><p>Catheter angiography of the brain vessels as a simulator.</p>
+          <div class="meta"><span class="pill dev">In development</span><span class="go">Soon</span></div></div>
+      </div>
+
+      <div class="card soon" aria-disabled="true">
+        <div class="film"><span class="seq">Doppler · angle</span>
+          <svg viewBox="0 0 200 80" fill="none" stroke-linecap="round" aria-hidden="true"><path d="M20 54 H180" stroke="#c4cdd2" stroke-width="10" stroke-opacity=".35"/><path d="M20 54 H180" stroke="#c4cdd2" stroke-width="1.5"/><path d="M60 8 L104 54" stroke="#60dcec" stroke-width="2.2"/><path d="M86 54 A18 18 0 0 0 91 41" stroke="#ff6b3d" stroke-width="2"/></svg>
+        </div>
+        <div class="body"><h3>Insonation Angle Lab</h3><p>How the insonation angle changes the measured Doppler velocity.</p>
+          <div class="meta"><span class="pill dev">In development</span><span class="go">Soon</span></div></div>
+      </div>
+
+      <div class="card soon" aria-disabled="true">
+        <div class="film"><span class="seq">Carotid · bifurcation</span>
+          <svg viewBox="0 0 200 80" fill="none" stroke-linecap="round" aria-hidden="true"><path d="M30 70 C70 66 92 56 104 44 C116 32 140 22 176 12" stroke="#c4cdd2" stroke-width="7" stroke-opacity=".5"/><path d="M104 44 C122 44 146 50 176 60" stroke="#c4cdd2" stroke-width="5" stroke-opacity=".5"/><path d="M40 28 L168 70" stroke="#60dcec" stroke-width="1.6" stroke-dasharray="4 4"/></svg>
+        </div>
+        <div class="body"><h3>Carotid Bifurcation Plane</h3><p>Finding the imaging plane through the carotid bifurcation.</p>
+          <div class="meta"><span class="pill dev">In development</span><span class="go">Soon</span></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="group" aria-labelledby="g-nm">
+    <header><h2 id="g-nm">Neuroanatomy and neuromuscular</h2><p>Pathways and peripheral nerves</p></header>
+    <div class="grid">
+      <div class="card soon" aria-disabled="true">
+        <div class="film"><span class="seq">Corticospinal tract</span>
+          <svg viewBox="0 0 200 80" fill="none" stroke-linecap="round" aria-hidden="true"><path d="M70 8 C72 24 88 34 98 44 C108 54 124 60 130 76" stroke="#60dcec" stroke-width="2.2"/><path d="M60 4 C40 6 30 18 34 30" stroke="#c4cdd2" stroke-width="1.6"/><path d="M80 4 C100 2 112 10 110 22" stroke="#c4cdd2" stroke-width="1.6"/><path d="M84 46 H112" stroke="#c4cdd2" stroke-width="1.2" stroke-dasharray="2 3"/></svg>
+        </div>
+        <div class="body"><h3>Motor Pathway Lab</h3><p>The motor pathway from cortex to muscle and where lesions show up.</p>
+          <div class="meta"><span class="pill dev">In development</span><span class="go">Soon</span></div></div>
+      </div>
+      <div class="card soon" aria-disabled="true">
+        <div class="film"><span class="seq">Ultrasound · median nerve</span>
+          <svg viewBox="0 0 200 80" fill="none" aria-hidden="true"><ellipse cx="100" cy="44" rx="34" ry="16" stroke="#d6dee2" stroke-width="2"/><g fill="#93a0a7"><circle cx="86" cy="42" r="4"/><circle cx="98" cy="38" r="4"/><circle cx="110" cy="44" r="4"/><circle cx="94" cy="50" r="4"/><circle cx="108" cy="52" r="3.5"/></g><path d="M20 20 H180" stroke="#252d32" stroke-width="1.5"/></svg>
+        </div>
+        <div class="body"><h3>Medianus-Sono-Trainer</h3><p>Ultrasound of the median nerve.</p>
+          <div class="meta"><span class="pill dev">In development</span><span class="go">Soon</span></div></div>
+      </div>
+    </div>
+  </section>
+
+    <footer>
+    <p><b>Created by Senol Apaydin, MD</b>, built with the help of AI · Licensed under <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">GPL-3.0</a> · provided without warranty</p>
+    <p>Educational models. Real anatomy varies between people. Not for clinical decisions.</p>
+  </footer>
+</div>
+</body>
+</html>
