@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <!--
-  Stroke Territory Explorer · Version 0.9.42 (beta) · 8 November 2026
+  Stroke Territory Explorer · Version 0.9.43 (beta) · 8 November 2026
   © 2026 Senol Apaydin, MD, built with the help of AI.
   Licensed under the GNU General Public License v3.0 (https://www.gnu.org/licenses/gpl-3.0.html).
   Additional terms under section 7 of the GPL-3.0, for the author's own contributions (code and texts):
@@ -396,9 +396,10 @@ footer a{color:var(--accent)}
   </main>
 
   <footer>
-    <p>© 2026 · <b>Created by Senol Apaydin, MD</b>, built with the help of AI · Licensed under <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">GPL-3.0</a> · provided without warranty · Version 0.9.42 (beta) · 8 November 2026</p>
+    <p>© 2026 · <b>Created by Senol Apaydin, MD</b>, built with the help of AI · Licensed under <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">GPL-3.0</a> · provided without warranty · Version 0.9.43 (beta) · 8 November 2026</p>
     <p class="terms">Additional terms under section 7 of the GPL-3.0 for the author’s own code and texts: keep the attribution “Created by Senol Apaydin, MD”; mark modified versions clearly as modified and do not present them as the original or as made or reviewed by the author; do not use the author’s name to promote or endorse modified versions or derived products without written permission.</p>
     <details class="news"><summary>What’s new</summary><ul>
+      <li><b>0.9.43</b> · Four cards open at the level that shows the typical lesion: P1 perforators at the rostral midbrain, anterior choroidal at the posterior limb of the internal capsule, tuberothalamic at the anterior thalamus, VA / PICA at the lateral medulla.</li>
       <li><b>0.9.42</b> · Artery of Percheron: the midbrain part is limited to the rostral paramedian midbrain, and the view opens at the level of the thalami.</li>
       <li><b>0.9.41</b> · Frequencies from the published series checked against the full texts; page numbers recorded for all series. Corrected: weakness and sensory loss in large MCA infarcts, abulia after caudate infarcts, the Percheron and midbrain series.</li>
       <li><b>0.9.40</b> · ASPECTS view, card and <i>How to use</i> state clearly that ASPECTS is a CT score shown here on MRI.</li>
@@ -509,7 +510,7 @@ const VESSELS = [
   dom:['Slight aphasia'], nondom:['Restlessness and hyperactivity','{C} visual neglect'],
   pearl:'Often not a single artery: only about a quarter of people have one Heubner artery; the rest have two to four parallel recurrent arteries.',
   codes:[2], atlas:['derived','front part of the atlas lateral lenticulostriate label: caudate head, anterior limb of the internal capsule and front of the putamen']},
- {id:'acha', g:'A', chip:'Ant. choroidal', name:'Anterior choroidal artery', seg:'Supraclinoid ICA', syn:'Anterior choroidal syndrome',
+ {id:'acha', focusZ:-21, g:'A', chip:'Ant. choroidal', name:'Anterior choroidal artery', seg:'Supraclinoid ICA', syn:'Anterior choroidal syndrome',
   supplies:['Posterior limb of the internal capsule (posterior part)','Optic tract and lateral geniculate body','Medial temporal lobe, including the uncus','Medial globus pallidus'],
   def:['{C} hemiparesis of face, arm and leg','{C} hemisensory loss, often marked but temporary','{C} homonymous hemianopia or quadrantanopia; with lateral geniculate infarction, loss of the upper and lower sectors sparing a strip along the horizontal meridian (quadruple sectoranopia)','No persistent neglect, aphasia or other cortical signs'],
   dom:[], nondom:[],
@@ -557,7 +558,7 @@ const VESSELS = [
   dom:['Alexia without agraphia (with splenial involvement)','Difficulty naming colours, anomia'], nondom:['Visual neglect','Topographic disorientation','Prosopagnosia (more often with bilateral lesions)'],
   pearl:'Occlusion of the PCA before its thalamogeniculate branches adds {C} hemisensory loss to the hemianopia; hemisensory loss with hemianopia and no paralysis is virtually diagnostic of the PCA territory. Rarely, occlusion at the PCA origin also infarcts the cerebral peduncle and adds {C} hemiplegia; at the bedside this is not easily told apart from an MCA or anterior choroidal infarct, but CT or MRI separates them. Bilateral PCA infarction causes cortical blindness, sometimes with denial of the blindness (Anton syndrome).',
   codes:[9,10], atlas:['atlas','PCA temporal and occipital labels']},
- {id:'tuber', g:'P', chip:'Tuberothalamic', name:'Tuberothalamic (polar) artery', seg:'Middle third of the posterior communicating artery', syn:'Anterior (polar) thalamic infarct',
+ {id:'tuber', focusZ:-11, g:'P', chip:'Tuberothalamic', name:'Tuberothalamic (polar) artery', seg:'Middle third of the posterior communicating artery', syn:'Anterior (polar) thalamic infarct',
   supplies:['Anteromedial and anterolateral thalamic nuclei','Mamillothalamic tract','Reticular nucleus and parts of the ventral lateral and dorsomedial nuclei; not the anterior nucleus'],
   def:['Abulia: slowness, little spontaneous activity or speech, long delays in answering','Anterograde memory loss: new information is not retained','Facial asymmetry and transient minor {C} motor signs'],
   dom:['Aphasia with preserved repetition (thalamic aphasia)'], nondom:['{C} visual neglect'],
@@ -581,7 +582,7 @@ const VESSELS = [
   dom:[], nondom:[],
   pearl:'The lateral geniculate body has two arterial supplies with mirror-image field defects: posterior choroidal infarcts cut a horizontal wedge along the meridian, anterior choroidal infarcts take the upper and lower sectors and spare the meridian. Isolated posterior choroidal infarcts are rarely reported: 3 of 40 thalamic infarcts in the Lausanne series.',
   codes:[25], atlas:['derived','posterior quarter of the atlas thalamic label. The division of the thalamus into four territories is schematic; the borders vary between people']},
- {id:'p1', g:'P', chip:'P1 perforators', name:'P1 midbrain perforators', seg:'P1', syn:'Weber syndrome',
+ {id:'p1', focusZ:-39, g:'P', chip:'P1 perforators', name:'P1 midbrain perforators', seg:'P1', syn:'Weber syndrome',
   supplies:['Cerebral peduncle (corticospinal and corticobulbar fibres)','Oculomotor fascicles','Red nucleus'],
   def:['{I} oculomotor palsy','{C} hemiparesis including the face'],
   dom:[], nondom:[],
@@ -617,7 +618,7 @@ const VESSELS = [
   dom:[], nondom:[],
   pearl:'Facial paralysis and hearing loss separate AICA from lateral medullary (PICA) syndrome. The AICA territory varies in size and is reciprocal to the PICA territory: the larger one, the smaller the other.',
   codes:[20,16], atlas:['derived','the atlas merges AICA and PICA in one inferior cerebellar label; shown here is its part within 18 mm of the lateral pons and away from the midline (middle cerebellar peduncle, flocculus, anterior inferior surface), plus the lateral pons']},
- {id:'pica', g:'P', chip:'VA / PICA', name:'Vertebral artery / PICA', seg:'Intracranial vertebral artery and its PICA branch', syn:'Wallenberg (lateral medullary) syndrome',
+ {id:'pica', focusZ:-73, g:'P', chip:'VA / PICA', name:'Vertebral artery / PICA', seg:'Intracranial vertebral artery and its PICA branch', syn:'Wallenberg (lateral medullary) syndrome',
   supplies:['Dorsolateral medulla (lateral medullary tegmentum), mainly through penetrating branches of the intracranial vertebral artery','Posterior inferior cerebellum and inferior vermis'],
   def:['{I} facial pain and temperature loss','{C} loss of pain and temperature on the body','Dysphagia, hoarseness, reduced gag','{I} Horner syndrome','Vertigo, nystagmus, nausea and vomiting','{I} limb ataxia','Loss of taste on the {I} side of the tongue','Hiccups','No limb weakness unless the infarct extends medially'],
   dom:[], nondom:[],
