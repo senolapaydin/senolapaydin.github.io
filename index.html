@@ -73,6 +73,10 @@ a.card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .feature .body h3{font-size:26px}
 .feature .body p{font-size:15.5px}
 .feature ul{margin:4px 0 0;padding-left:18px;font-size:14.5px;color:var(--muted);display:flex;flex-direction:column;gap:3px}
+.feature.wide{grid-template-columns:minmax(0,1fr)}
+.feature.wide .film.shot{min-height:0;aspect-ratio:1593/653;border-right:0;border-bottom:1px solid var(--film-line)}
+.film.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
+.feature.wide .body p,.feature.wide ul{max-width:72ch}
 @media (max-width:760px){.feature{grid-template-columns:minmax(0,1fr)}.feature .film{border-right:0;border-bottom:1px solid var(--film-line);min-height:170px}}
 
 .note{font-size:13px;color:var(--muted);background:var(--soft);border-radius:10px;padding:12px 14px;max-width:80ch}
@@ -101,20 +105,8 @@ footer a{color:var(--accent)}
     <header><h2 id="g-vasc">Neurovascular</h2><p>Vessels and territories</p></header>
     <div class="grid">
 
-      <a class="card feature" href="stroke-explorer/">
-        <div class="film"><span class="seq">MRA · Circle of Willis</span>
-          <svg viewBox="0 0 320 140" fill="none" stroke-linecap="round" aria-hidden="true">
-            <g stroke="#c4cdd2" stroke-width="2.4">
-              <path d="M160 132 V98"/><path d="M160 98 C138 88 120 84 98 84"/><path d="M160 98 C182 88 200 84 222 84"/>
-              <path d="M98 84 C92 64 100 46 112 36"/><path d="M222 84 C228 64 220 46 208 36"/>
-              <path d="M112 36 C128 30 146 28 156 22"/><path d="M208 36 C192 30 174 28 164 22"/><path d="M156 22 H164"/>
-              <path d="M112 36 C84 34 60 30 34 20"/><path d="M98 84 C74 92 52 104 30 118"/><path d="M222 84 C246 92 268 104 290 118"/>
-              <path d="M156 22 C150 12 146 8 140 4"/><path d="M164 22 C170 12 174 8 180 4"/>
-            </g>
-            <path d="M208 36 C236 34 260 30 286 20" stroke="#ff6b3d" stroke-width="3"/>
-            <circle cx="214" cy="35.6" r="5" fill="#ff6b3d" stroke="#07090a" stroke-width="1.5"/>
-          </svg>
-        </div>
+      <a class="card feature wide" href="stroke-explorer/">
+        <div class="film shot"><img src="stroke-explorer/preview.jpg" width="1593" height="653" alt="Stroke Territory Explorer: the left M1 segment occluded on the Circle of Willis schematic, and the left MCA territory highlighted on axial and coronal MRI slices"></div>
         <div class="body">
           <h3>Stroke Territory Explorer</h3>
           <p>Occlude an artery on the Circle of Willis and its territory lights up on real MRI slices from a published 3D atlas of 1,298 stroke patients. Read the matching syndrome, or work backwards from the findings.</p>
