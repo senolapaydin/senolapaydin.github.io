@@ -10,6 +10,7 @@ Each tool runs in the browser, with nothing to install.
 | Stroke Territory Explorer | [`stroke-explorer/`](stroke-explorer/) | Beta |
 | Willis Flow Explorer | – | In development |
 | Transcranial Doppler Explorer | – | In development |
+| EMG Sound Trainer | – | In development |
 
 ## Licence
 
