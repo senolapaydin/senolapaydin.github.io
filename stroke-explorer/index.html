@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <!--
-  Stroke Territory Explorer · Version 0.9.46 (beta) · 8 November 2026
+  Stroke Territory Explorer · Version 0.9.47 (beta) · 10 November 2026
   © 2026 Senol Apaydin, MD, built with the help of AI.
   Licensed under the GNU General Public License v3.0 (https://www.gnu.org/licenses/gpl-3.0.html).
   Additional terms under section 7 of the GPL-3.0, for the author's own contributions (code and texts):
@@ -396,9 +396,10 @@ footer a{color:var(--accent)}
   </main>
 
   <footer>
-    <p>© 2026 · <b>Created by Senol Apaydin, MD</b>, built with the help of AI · Licensed under <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">GPL-3.0</a> · provided without warranty · Version 0.9.46 (beta) · 8 November 2026</p>
+    <p>© 2026 · <b>Created by Senol Apaydin, MD</b>, built with the help of AI · Licensed under <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">GPL-3.0</a> · provided without warranty · Version 0.9.47 (beta) · 10 November 2026</p>
     <p class="terms">Additional terms under section 7 of the GPL-3.0 for the author’s own code and texts: keep the attribution “Created by Senol Apaydin, MD”; mark modified versions clearly as modified and do not present them as the original or as made or reviewed by the author; do not use the author’s name to promote or endorse modified versions or derived products without written permission.</p>
     <details class="news"><summary>What’s new</summary><ul>
+      <li><b>0.9.47</b> · Source pages checked in the books and completed for seven cards (MCA, Heubner, MCA–PCA border zone, basilar perforators, paramedian pons, SCA, AICA); no change to texts or maps.</li>
       <li><b>0.9.46</b> · ASPECTS: the insular region is the insular ribbon only, without the claustrum and extreme capsule; a lenticulostriate infarct now scores 7. AICA card: note on the basilar supply of the lateral pons.</li>
       <li><b>0.9.45</b> · Checked against the section maps of Tatu 1996 and 1998: the lateral midbrain now belongs to the PCA (collicular and medial posterior choroidal branches); the SCA keeps the dorsal lower midbrain. Heubner covers only the lower front part of the caudate head and anterior limb; above it the lenticulostriates take over.</li>
       <li><b>0.9.44</b> · Brainstem levels follow the anatomy of the template: the pons reaches up to the top of the fourth ventricle and the midbrain up to the third ventricle; the atlas planes lay 6–10 mm too low. P1 perforators open at the upper midbrain.</li>
@@ -1372,16 +1373,16 @@ const REFS = {
 /* Sources per card: [reference, pages]. Not shown on the cards (since 0.9.38); kept here and in the project document “Quellen pro Karte” to answer questions. Statement-by-statement mapping: project document “Referenzpruefung”. */
 const SRC = {
  ica:[['mic','pp. 19, 26, 63, 70–72'],['cap','pp. 69, 225, 237'],['hei98','pp. 343, 347']],
- mca:[['mic','pp. 66–70'],['cap','pp. 235, 237'],['hei98','pp. 343, 347']],
+ mca:[['mic','pp. 66–71'],['cap','pp. 29, 235, 237'],['hei98','pp. 343, 347']],
  mcaSup:[['mic','pp. 66–68'],['cap','p. 29']],
  mcaInf:[['mic','pp. 68–71'],['cap','pp. 29, 235']],
  lsa:[['mic','pp. 69, 82–85'],['cap','pp. 37, 289, 291'],['tatu98','pp. 1701–1702']],
- heubner:[['mic','pp. 73–74'],['cap','pp. 37, 242'],['kum99','pp. 100, 103, 106'],['tatu98','pp. 1700–1701, 1705']],
+ heubner:[['mic','pp. 73–74'],['cap','pp. 37, 241–242'],['kum99','pp. 100, 103, 106'],['tatu98','pp. 1700–1701, 1705']],
  acha:[['mic','p. 74'],['cap','pp. 30, 243, 298'],['hup94','pp. 825–826, 829, 832']],
  aca:[['mic','pp. 71–72'],['cap','pp. 240–242'],['kang08','pp. 2386, 2388'],['tatu98','pp. 1705–1706']],
  bz:[['cap','pp. 372–373'],['mangla11','pp. 1203–1205']],
  bzBoth:[['cap','pp. 372–373']],
- bzPostU:[['belden99','pp. 1313–1314, 1317'],['cap','pp. 40, 372'],['mangla11','pp. 1202, 1204, 1207']],
+ bzPostU:[['belden99','pp. 1313–1314, 1317'],['cap','pp. 40, 273, 372'],['mangla11','pp. 1202, 1204, 1207']],
  bzPost:[['mic','pp. 81–82'],['cap','pp. 278, 372–373'],['belden99','p. 1313']],
  bzInt:[['cap','pp. 29, 40, 372'],['mangla11','pp. 1205–1207']],
  pca:[['mic','pp. 80–81'],['cap','pp. 275–277'],['cals02','pp. 855, 857–859'],['tatu96','pp. 1126, 1133–1134']],
@@ -1391,10 +1392,10 @@ const SRC = {
  pchor:[['cap','p. 298'],['bog88','pp. 838, 840, 842']],
  p1:[['mic','pp. 96, 101'],['kimkim05','pp. 1227–1228, 1231'],['tatu96','p. 1131']],
  tob:[['mic','p. 79'],['cap','pp. 271–273']],
- bas:[['mic','pp. 76–78, 84'],['cap','pp. 267–270, 273'],['sav87','p. 199']],
- pontPar:[['mic','pp. 67, 84, 90'],['cap','p. 273'],['sav87','p. 199']],
- sca:[['mic','pp. 52, 75'],['cap','pp. 264, 271'],['tatu96','pp. 1126–1127, 1132–1133']],
- aica:[['mic','pp. 75, 93'],['cap','p. 73'],['lee09','pp. 3745–3747'],['ama90','p. 139'],['sav87','p. 199'],['tatu96','pp. 1127, 1131–1133']],
+ bas:[['mic','pp. 76–78, 84, 90'],['cap','pp. 267–270, 273'],['sav87','p. 199']],
+ pontPar:[['mic','pp. 67, 84–85, 90'],['cap','p. 273'],['sav87','p. 199']],
+ sca:[['mic','pp. 52, 75'],['cap','pp. 264, 271, 608'],['tatu96','pp. 1126–1127, 1132–1133']],
+ aica:[['mic','pp. 75, 88, 93'],['cap','p. 73'],['lee09','pp. 3745–3747'],['ama90','p. 139'],['sav87','p. 199'],['tatu96','pp. 1127, 1131–1133']],
  pica:[['mic','pp. 75, 88'],['cap','pp. 260–263'],['kim03','pp. 1866–1868'],['tatu96','p. 1127']],
  asa:[['mic','p. 90'],['kimhan09','pp. 3221, 3223–3224'],['sav87','p. 199']],
  aspects:[['mic','pp. 123–124, 186'],['barber00','p. 1670'],['pex01','p. 1534'],['barber05','p. 1528']],
