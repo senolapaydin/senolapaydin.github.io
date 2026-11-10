@@ -15,7 +15,8 @@ Each tool runs in the browser, with nothing to install.
 ## Licence
 
 Created by Senol Apaydin, MD, built with the help of AI.
-Licensed under the GNU General Public License v3.0 (see [LICENSE](LICENSE)).
+The start page and the Stroke Territory Explorer are licensed under the GNU General Public License v3.0 (see [LICENSE](LICENSE)).
+Every tool states its own licence in its footer; the preview images of tools in development are covered by the licence of that tool, not by this repository's LICENSE.
 
 Additional terms under section 7 of the GPL-3.0 for the author's own code and texts:
 keep the attribution "Created by Senol Apaydin, MD"; mark modified versions clearly as modified and do not present them as the original or as made or reviewed by the author; do not use the author's name to promote or endorse modified versions or derived products without written permission.
