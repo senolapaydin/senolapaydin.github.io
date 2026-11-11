@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <!--
-  Stroke Territory Explorer · Version 0.9.47 (beta) · 10 November 2026
+  Stroke Territory Explorer · Version 0.9.49 (beta) · 10 November 2026
   © 2026 Senol Apaydin, MD, built with the help of AI.
   Licensed under the GNU General Public License v3.0 (https://www.gnu.org/licenses/gpl-3.0.html).
   Additional terms under section 7 of the GPL-3.0, for the author's own contributions (code and texts):
@@ -12,7 +12,8 @@
         without the author's written permission.
   Provided without warranty. Educational model, not for clinical decisions.
   Contains: Digital 3D Brain MRI Arterial Territories Atlas (Liu et al., Johns Hopkins University), CC BY-SA 4.0;
-  JHU single-subject b0 template from the atlas authors' stroke segmentation toolkit, GPL-3.0.
+  JHU single-subject b0 template and lobe atlas (basis of the ASPECTS regions) from the atlas authors' stroke
+  segmentation toolkit, GPL-3.0.
 -->
 <head>
 <meta charset="utf-8">
@@ -79,7 +80,6 @@ h1{font:700 clamp(30px,4.2vw,46px)/1 var(--f-display);letter-spacing:-.025em;mar
 .cand .cb i{display:block;height:100%;background:var(--accent)}
 .cdet{padding:6px 2px 4px;font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:4px}
 .cdet b{color:var(--ink);font-weight:600}
-.note2{margin-top:8px !important;font-size:12.5px;color:var(--muted)}
 .mexp{margin:2px 0 8px;font-size:12.5px;color:var(--muted)}
 .mexp summary{cursor:pointer;color:var(--accent);font-weight:500;width:max-content;max-width:100%}
 .mexp p{margin:6px 0 0 !important;line-height:1.45}
@@ -140,14 +140,6 @@ h1{font:700 clamp(30px,4.2vw,46px)/1 var(--f-display);letter-spacing:-.025em;mar
 .fs2 button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .fside{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin:2px 0 6px 28px;padding:8px 10px;background:var(--bg);border-radius:8px;font-size:12.5px;color:var(--muted)}
 .fnone{font-size:13px;color:var(--muted);margin-top:8px !important}
-.fgrid{display:flex;flex-direction:column;gap:2px}
-.frow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:4px 0;border-bottom:1px solid var(--line);font-size:13.5px}
-.frow:last-child{border-bottom:0}
-.frow .fl{min-width:0}
-.frow .fl small{color:var(--muted);font-size:11.5px}
-.fs{display:inline-flex;gap:4px;flex:0 0 auto}
-.fs button{min-width:32px;height:28px;border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:6px;font:600 12px var(--f-mono);cursor:pointer}
-.fs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
 .grid{display:grid;gap:20px;grid-template-columns:minmax(0,1fr);grid-template-areas:"mra" "films" "card"}
@@ -258,14 +250,10 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline
 .atlas-note{font-size:13px;color:var(--muted)}
 .atlas-note em{font-style:normal;font:500 10px var(--f-mono);text-transform:uppercase;letter-spacing:.06em;border:1px solid var(--line);border-radius:4px;padding:1px 5px;margin-right:6px;color:var(--ink)}
 .linkbtn{background:none;border:0;padding:0;margin-top:10px;font:500 13px var(--f-body);color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
-.srcline{font-size:12px;color:var(--muted);margin-top:14px !important;line-height:1.7}
-.srcline b{font:600 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-right:6px}
-.reflink{background:none;border:0;padding:0;font:inherit;color:var(--accent);cursor:pointer;text-decoration:underline;text-decoration-color:color-mix(in srgb, currentColor 35%, transparent);text-underline-offset:2px}
 .cite{font-size:12px;color:var(--muted);white-space:nowrap}
 .cite::before{content:'— '}
 .reflist{font-size:12.5px;line-height:1.5;padding-left:28px;margin:8px 0}
-.reflist li{margin:3px 0;border-radius:4px;transition:background .3s}
-.reflist li.hl{background:color-mix(in srgb, var(--accent) 18%, transparent)}
+.reflist li{margin:3px 0}
 .refnote{font-size:12px;color:var(--muted)}
 .pearl{margin-top:20px !important;padding:12px 14px;background:var(--bg);border-radius:8px;font-size:14px}
 .pearl b{font:600 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--accent);display:block;margin-bottom:4px}
@@ -286,7 +274,6 @@ footer p{margin:0;max-width:96ch}
 footer a{color:var(--accent)}
 .news summary{cursor:pointer;color:var(--accent);font-weight:500;width:max-content;max-width:100%}
 .news ul{margin:6px 0 0;padding-left:18px;max-width:96ch;display:flex;flex-direction:column;gap:4px}
-.src{display:flex;flex-wrap:wrap;gap:4px 14px}
 .asp-ov{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .asp-ov text{font:600 7px var(--f-mono);fill:#e9eef1;text-anchor:middle;dominant-baseline:central;paint-order:stroke;stroke:#07090a;stroke-width:1.6px}
 .asp-ov text.hit{fill:#ffc23d}
@@ -396,38 +383,10 @@ footer a{color:var(--accent)}
   </main>
 
   <footer>
-    <p>© 2026 · <b>Created by Senol Apaydin, MD</b>, built with the help of AI · Licensed under <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">GPL-3.0</a> · provided without warranty · Version 0.9.47 (beta) · 10 November 2026</p>
+    <p>© 2026 · <b>Created by Senol Apaydin, MD</b>, built with the help of AI · Licensed under <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">GPL-3.0</a> · provided without warranty · Version 0.9.49 (beta) · 10 November 2026</p>
     <p class="terms">Additional terms under section 7 of the GPL-3.0 for the author’s own code and texts: keep the attribution “Created by Senol Apaydin, MD”; mark modified versions clearly as modified and do not present them as the original or as made or reviewed by the author; do not use the author’s name to promote or endorse modified versions or derived products without written permission.</p>
     <details class="news"><summary>What’s new</summary><ul>
-      <li><b>0.9.47</b> · Source pages checked in the books and completed for seven cards (MCA, Heubner, MCA–PCA border zone, basilar perforators, paramedian pons, SCA, AICA); no change to texts or maps.</li>
-      <li><b>0.9.46</b> · ASPECTS: the insular region is the insular ribbon only, without the claustrum and extreme capsule; a lenticulostriate infarct now scores 7. AICA card: note on the basilar supply of the lateral pons.</li>
-      <li><b>0.9.45</b> · Checked against the section maps of Tatu 1996 and 1998: the lateral midbrain now belongs to the PCA (collicular and medial posterior choroidal branches); the SCA keeps the dorsal lower midbrain. Heubner covers only the lower front part of the caudate head and anterior limb; above it the lenticulostriates take over.</li>
-      <li><b>0.9.44</b> · Brainstem levels follow the anatomy of the template: the pons reaches up to the top of the fourth ventricle and the midbrain up to the third ventricle; the atlas planes lay 6–10 mm too low. P1 perforators open at the upper midbrain.</li>
-      <li><b>0.9.43</b> · Four cards open at the level that shows the typical lesion: P1 perforators at the rostral midbrain, anterior choroidal at the posterior limb of the internal capsule, tuberothalamic at the anterior thalamus, VA / PICA at the lateral medulla.</li>
-      <li><b>0.9.42</b> · Artery of Percheron: the midbrain part is limited to the rostral paramedian midbrain, and the view opens at the level of the thalami.</li>
-      <li><b>0.9.41</b> · Frequencies from the published series checked against the full texts; page numbers recorded for all series. Corrected: weakness and sensory loss in large MCA infarcts, abulia after caudate infarcts, the Percheron and midbrain series.</li>
-      <li><b>0.9.40</b> · ASPECTS view, card and <i>How to use</i> state clearly that ASPECTS is a CT score shown here on MRI.</li>
-      <li><b>0.9.39</b> · New <i>ASPECTS</i> view: the ten regions on the ganglionic and supraganglionic levels, with a short explanation. For ICA, MCA, MCA division and lenticulostriate occlusions, the involved regions are marked and the card shows the score on this map.</li>
-      <li><b>0.9.38</b> · Cards no longer show a source line; all references are collected under <i>References</i> at the bottom. The sources for each card remain documented.</li>
-      <li><b>0.9.37</b> · <i>How to use</i> updated: how to answer a case, pointing with the mouse, and where to find <i>Crosshair</i> and <i>Variable borders</i>.</li>
-      <li><b>0.9.36</b> · Neurological review: PCA card names the hemisensory loss of proximal occlusion and the rare hemiplegia that mimics MCA; AICA card marks Horner as rare and body hypalgesia as occasional; lenticulostriate card adds sensorimotor stroke; P1 card names Claude syndrome.</li>
-      <li><b>0.9.35</b> · <i>How to use</i> updated: sources and published series on the cards, syndrome presets and up to five matches in <i>From findings</i>.</li>
-      <li><b>0.9.34</b> · All Micieli and Caplan citations rechecked page by page: page numbers corrected on the ICA, lenticulostriate and SCA cards; anterior choroidal supply limited to what the sources state (medial temporal lobe including the uncus); “man in a barrel” described as in the source.</li>
-      <li><b>0.9.33</b> · Paramedian pons: the wedge-shaped paramedian infarct is now described on the card with its sources (it abuts the ventral surface, is sharply bounded at the midline and reaches the tegmentum when larger); brainstem source lines updated.</li>
-      <li><b>0.9.32</b> · Second source check with full texts (Bogousslavsky 1986, Mangla 2011, Tatu 1996 and 1998, Hupperts 1994, Liu 2023, Savoiardo 1987): tuberothalamic nuclei corrected; border-zone cards revised (internal border zone mainly haemodynamic, rosary pattern on DWI; unilateral posterior border zone often embolic, deficits now from the Boston series of Belden 1999); <i>From findings</i> lists up to five matches instead of three; Caplan page numbers for border zones corrected; SCA: Horner and contralateral pain–temperature loss removed for lack of a source; anterior choroidal card shows the Maastricht series.</li>
-      <li><b>0.9.31</b> · Every card now lists its sources with page numbers, and a full reference list is in the footer. Cards with a large published series show how often each sign occurred. Statements that could not be traced to a source were removed or reworded. Medial medulla: tongue deviation is uncommon in MRI series. Weber: hemiparesis requires the cerebral peduncle.</li>
-      <li><b>0.9.30</b> · New switch “Variable borders”: borders with neighbouring territories are drawn as a hatched band with a dashed line, because they shift between people. The basilar tip card can include both SCA territories.</li>
-      <li><b>0.9.29</b> · The thalamus now shows all four main territories: new cards for the tuberothalamic (polar) and posterior choroidal arteries. New card for a one-sided MCA–PCA border zone. The lateral medulla is limited to its dorsolateral part, the olive goes with the medial group. New presets for thalamic syndromes and the posterior border zone.</li>
-      <li><b>0.9.28</b> · Paramedian territories of midbrain, pons and medulla are now wedge-shaped, broad at the ventral surface and narrow toward the tegmentum; the thalamus cards note that only two of its four main territories are shown.</li>
-      <li><b>0.9.27</b> · Gyrus rectus, medial orbital surface and medial frontal pole now belong to the ACA; PCom and ACom labelled on the Circle of Willis; the midline is labelled as midline; notes on simplified boundaries, template coordinates and AICA–PICA reciprocity.</li>
-      <li><b>0.9.26</b> · Review against Micieli and Caplan: the corpus callosum now belongs to the ACA; Heubner shows the caudate head and anterior limb; AICA is limited to the anterolateral inferior cerebellum, the tonsils and inferior vermis belong to PICA; the basilar entry is named for its perforators; Foville includes loss of vibration and position sense; lacune size up to about 15 mm.</li>
-      <li><b>0.9.25</b> · Additional licence terms under section 7 of the GPL-3.0.</li>
-      <li><b>0.9.24</b> · New entry for the paramedian pons on one side (Foville syndrome). Bilateral proximal arm weakness now points to the ACA–MCA border zones on both sides (man in a barrel).</li>
-      <li><b>0.9.22</b> · Licence note in the footer and in the code.</li>
-      <li><b>0.9.21</b> · Quadrantanopia on the PCA card; internal border zone no longer drawn as a case; <i>Strong</i> needs at least two findings; Vertebral artery / PICA renamed; ICA card notes that it combines the MCA and ACA syndromes.</li>
-      <li><b>0.9.20</b> · Syndrome presets follow the lesion side.</li>
-      <li><b>0.9.19</b> · Note on isolated vertigo.</li>
-      <li><b>0.9.18</b> · Peripheral versus central facial palsy.</li>
+      <li><b>0.9.49</b> · <i>Get it on your device</i> points to the website; the ASPECTS help text is clearer; unused code removed. No change to texts on the cards or to the maps.</li>
     </ul></details>
     <p>Territory map: <a href="https://www.nitrc.org/projects/arterialatlas" target="_blank" rel="noopener">Digital 3D Brain MRI Arterial Territories Atlas</a> (Liu et al., Johns Hopkins University), CC BY-SA 4.0. Anatomy: the JHU single-subject b0 template shipped with the atlas authors' <a href="https://github.com/Chin-Fu-Liu/Acute-stroke_Detection_Segmentation" target="_blank" rel="noopener">stroke segmentation toolkit</a> (GPL-3.0). The atlas is a population map built from the DWI lesions of 1,298 patients with acute stroke, so it shows where each territory usually lies; individual territories vary, most at the borders. Small perforator territories (medial lenticulostriate, anterior thalamoperforators) rest mainly on prior anatomical knowledge, because few patients had isolated lesions there. Territories marked “derived” are subdivisions made for this page from the atlas labels. The atlas simplifies boundaries, partly as straight lines; real boundaries vary between individuals. The atlas divides thalamus, midbrain and pons by horizontal planes that lie 6–10 mm too low on this template; here these borders follow the template’s landmarks: pons up to the top of the fourth ventricle (z −43), midbrain up to below the third ventricle (z −27). Slice positions are millimetres in the atlas template, not MNI coordinates. ASPECTS regions are derived for this page from the lobe atlas shipped with the same toolkit (GPL-3.0) and divided geometrically; the insular region is the insular ribbon only, without the claustrum and extreme capsule. Because CC BY-SA 4.0 material may be used in GPL-3.0 works, this page as a whole is offered under GPL-3.0.</p>
     <p>Educational model. Real territories vary between people and with collateral flow. Not for clinical decisions.</p>
@@ -445,7 +404,7 @@ footer a{color:var(--accent)}
       <li><span><b>Read the syndrome.</b> The panel on the right lists the territory, expected deficits (contra = opposite side, ipsi = same side) and a clinical pearl. Where a large published series exists, it shows how often each sign occurred. All references are listed under <i>References</i> at the bottom of the page.</span></li>
       <li><span><b>Try variants.</b> Fetal PCA and a hypoplastic A1 change which territory is lost.</span></li>
       <li><span><b>Variable borders.</b> The button under <i>Show</i>, next to <i>Level</i>, draws the borders between territories as a hatched band, a reminder that they shift from one person to the next.</span></li>
-      <li><span><b>ASPECTS.</b> The <i>ASPECTS</i> button under <i>Show</i> draws the ten ASPECTS regions on the two axial levels where they are scored. ASPECTS is a CT score; here the regions are shown on the MRI template; switch levels in the bar above the scans. For ICA and MCA occlusions, regions in the territory turn amber and the card shows the score on this map.</span></li>
+      <li><span><b>ASPECTS.</b> The <i>ASPECTS</i> button under <i>Show</i> draws the ten ASPECTS regions on the two axial levels where they are scored; switch levels in the bar above the scans. ASPECTS is a CT score, shown here on the MRI template. For ICA and MCA occlusions, regions in the territory turn amber and the card shows the score on this map.</span></li>
       <li><span><b>Practise.</b> <i>Localize a case</i> shows the findings of a patient; answer by tapping the artery on the angiogram, a vessel button or the territory on the scans. <i>Reveal answer</i> shows the solution, and the score counts along. <i>From findings</i> works the other way: pick the findings, or start from a classic syndrome, and up to five occlusion sites are ranked by a match score (0–100). It shows how well the pattern fits, not how likely the diagnosis is.</span></li>
       <li><span><b>Share.</b> <i>Copy link to this view</i> at the bottom of the panel opens exactly this artery, side and variant.</span></li>
     </ol>
@@ -459,7 +418,7 @@ footer a{color:var(--accent)}
       <dt>Android</dt>
       <dd>Open the link in Chrome. Tap <b>⋮</b> at the top right → <b>Add to Home screen</b> → <b>Add</b>.</dd>
       <dt>Desktop</dt>
-      <dd>Open the link in Chrome, Edge, Safari or Firefox and bookmark it (<b>Ctrl+D</b> / <b>⌘D</b>). For offline use, save the page (<b>Ctrl+S</b> / <b>⌘S</b>) and open the saved file with a double-click.</dd>
+      <dd>Open the link in Chrome, Edge, Safari or Firefox and bookmark it (<b>Ctrl+D</b> / <b>⌘D</b>). For offline use, save the page (<b>Ctrl+S</b> / <b>⌘S</b>) and open the file with a double-click.</dd>
     </dl>
     <p class="get-note">The link needs an internet connection and always shows the latest version. A saved HTML file works offline but stays at its version. The home-screen icon is a shortcut to the link.</p>
   </div>
@@ -1370,7 +1329,7 @@ const REFS = {
  barber05:['Barber 2005','Barber PA, Hill MD, Eliasziw M, et al. Imaging of the brain in acute ischaemic stroke: comparison of computed tomography and magnetic resonance diffusion-weighted imaging. J Neurol Neurosurg Psychiatry 2005;76:1528–1533.'],
  liu23:['Liu 2023','Liu CF, et al. Digital 3D Brain MRI Arterial Territories Atlas. Sci Data 2023. Territory map of this page.'],
 };
-/* Sources per card: [reference, pages]. Not shown on the cards (since 0.9.38); kept here and in the project document “Quellen pro Karte” to answer questions. Statement-by-statement mapping: project document “Referenzpruefung”. */
+/* Sources per card: [reference, pages]. Not shown on the page (since 0.9.38); kept here and in the project document “Quellen pro Karte” to answer questions. Statement-by-statement mapping: project document “Referenzpruefung”. */
 const SRC = {
  ica:[['mic','pp. 19, 26, 63, 70–72'],['cap','pp. 69, 225, 237'],['hei98','pp. 343, 347']],
  mca:[['mic','pp. 66–71'],['cap','pp. 29, 235, 237'],['hei98','pp. 343, 347']],
@@ -1418,10 +1377,6 @@ const FREQ = {
  asa:['86 consecutive patients: weakness 91 % (face involved in 24 %), sensory symptoms 73 % (vibration loss 59 % of those testable), dysarthria 63 %, vertigo or dizziness 59 %, limb ataxia 42 %, dysphagia 29 %; tongue deviation 14 % (toward the lesion 3 %, away 10 %).','kimhan09'],
 };
 const refShort = k => REFS[k][0];
-function srcLine(id){
-  const list = (SRC[id] || []).concat([['liu23','map']]);
-  return list.map(([k,p]) => `<button type="button" class="reflink" data-ref="${k}">${esc(refShort(k))}${p && p!=='map' ? ', '+esc(p) : ''}</button>`).join('; ');
-}
 
 /* ---------- card ---------- */
 function cardBody(v, side, from){
@@ -1617,7 +1572,6 @@ document.getElementById('card').addEventListener('click', e=>{
   const b = e.target.closest('button'); if(!b) return;
   if(b.dataset.aspon){ document.getElementById('aspBtn').click(); return; }
   if(b.dataset.tobsca){ state.tobSca = !state.tobSca; render(false); }
-  if(b.dataset.ref){ const d=document.getElementById('refs'); d.open=true; const li=document.getElementById('ref-'+b.dataset.ref); if(li){ li.scrollIntoView({behavior:'smooth',block:'center'}); li.classList.add('hl'); setTimeout(()=>li.classList.remove('hl'),1600); } return; }
   if(b.dataset.flip){ state.side = state.side==='L'?'R':'L'; state.from=null; render(true); }
   else if(b.dataset.next) newCase();
   else if(b.dataset.exit){ state.quiz = null; render(false); }
@@ -1646,7 +1600,7 @@ document.getElementById('variants').addEventListener('click', e=>{
 document.getElementById('card').addEventListener('click', e=>{
   const b = e.target.closest('[data-share]'); if(!b) return;
   const token = viewToken(); let base = '';
-  try{ if(/^https?:$/.test(location.protocol)) base = location.origin + location.pathname; }catch(err){}
+  try{ const ref = document.referrer || ''; if(/^https:\/\/claude\.ai\/.*artifact/.test(ref)) base = ref.split('#')[0]; if(!base && /^https:$/.test(location.protocol) && !/claude/.test(location.hostname)) base = location.href.split('#')[0]; }catch(err){}
   const text = base ? `${base}#${token}` : `#${token}`;
   const msg = document.getElementById('shareMsg');
   const done = () => { msg.innerHTML = base ? 'Link copied.' : `Copied <code>${esc(text)}</code>. Add it to the end of this page's address to open this exact view.`; };
