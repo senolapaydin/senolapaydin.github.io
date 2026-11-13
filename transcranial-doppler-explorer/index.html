@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <title>Transcranial Doppler Explorer</title>
-<!-- Transcranial Doppler Explorer 0.15.7 · © 2026 Senol Apaydin, MD · built with the help of AI · Licensed under CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/) · provided without warranty · teaching model, not for clinical decisions. The embedded background MRI (ICBM 2009c T2 template) stays under its own McGill copyright notice, given in the footer. -->
+<!-- Transcranial Doppler Explorer 0.15.8 · © 2026 Senol Apaydin, MD · built with the help of AI · Licensed under CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/) · provided without warranty · teaching model, not for clinical decisions. The embedded background MRI (ICBM 2009c T2 template) stays under its own McGill copyright notice, given in the footer. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
@@ -216,6 +216,11 @@ body{margin:0;padding-left:0;padding-right:0}
 .device{grid-area:device;min-width:0;background:#0a0d0f;border:1px solid #1b2327;border-radius:20px;padding:12px;display:flex;flex-direction:column;gap:12px;color:#c7d2d7;--line:#232c31;--surface:#11171a;--ink:#eef3f5;--muted:#93a1a8;--accent:#5ec6d4;--accent-ink:#04171b;--bg:#0a0d0f}
 .dev-top{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:flex-end;padding:2px 4px}
 /* 0.15.4: patient group (condition and its settings, age) left, probe group (window, side) right; in Identify and Cases, where Condition is hidden, the probe comes first */
+/* 0.15.8: Condition stands out in amber; filled when a condition is active */
+#condCtl .ctl-label{color:#f2c14e}
+.device #condSel{background:rgba(242,193,78,.12);border:1.5px solid #f2c14e;color:#ffe3a3;font-weight:600}
+.device #condSel.on{background:#f2c14e;color:#1a1405;border-color:#f2c14e}
+.device #condSel option,.device #condSel optgroup{background:#11171a;color:#eef3f5;font-weight:400}
 .dt-grp{display:contents}
 .dt-probe>.ctl:first-child{margin-left:10px}
 .dev-top:has(#condCtl[hidden]) .dt-probe>.ctl{order:-1}
@@ -311,7 +316,7 @@ footer{margin:28px max(20px,env(safe-area-inset-left,0px)) 0}
 
 <div class="app">
   <header class="bar">
-    <div class="logo"><svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="7" fill="#0a0d0f"/><path d="M5 17 L9 17 L11 9 L14 21 L16 13 L18 17 L23 17" fill="none" stroke="#5ec6d4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><b>TCD Explorer</b><span class="ver">0.15.7 beta</span></div>
+    <div class="logo"><svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="7" fill="#0a0d0f"/><path d="M5 17 L9 17 L11 9 L14 21 L16 13 L18 17 L23 17" fill="none" stroke="#5ec6d4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><b>TCD Explorer</b><span class="ver">0.15.8 beta</span></div>
     <nav class="path" aria-label="Learning path"><button type="button" data-mode="protocol"><span class="n">1</span>Protocol<span class="pc" id="pcProto"></span></button><span class="sep" aria-hidden="true"></span><button type="button" data-mode="identify"><span class="n">2</span>Identify<span class="pc" id="pcId"></span></button><span class="sep" aria-hidden="true"></span><button type="button" data-mode="cases"><span class="n">3</span>Cases<span class="pc" id="pcCases"></span></button></nav>
     <div class="bar-r"><button type="button" class="sandbox" data-mode="explore">Explore</button><button type="button" id="helpBtn" class="help-btn" aria-label="How to use"><i>i</i><span class="ht">How to use</span></button></div>
   </header>
@@ -412,9 +417,9 @@ footer{margin:28px max(20px,env(safe-area-inset-left,0px)) 0}
   </main>
 
   <footer>
-    <p>© 2026 · <b>Created by Senol Apaydin, MD</b>, built with the help of AI · Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> · Version 0.15.7 (beta) · 13 November 2026 · Provided without warranty.</p>
+    <p>© 2026 · <b>Created by Senol Apaydin, MD</b>, built with the help of AI · Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> · Version 0.15.8 (beta) · 13 November 2026 · Provided without warranty.</p>
     <details class="news"><summary>What’s new</summary><ul>
-      <li><b>0.15.7</b> · <i>How to use</i> now tells you how to get the tool on your phone, tablet or computer, with the website address and a copy button. 0.15.6: page numbers for every citation of Widder &amp; Hamann 2018; Lindegaard ranges as in the book (1.0–2.5 normal or hyperperfusion, 3 or more stenosis or spasm).</li>
+      <li><b>0.15.8</b> · The Condition menu is highlighted in amber and fills in when a condition is active. 0.15.7: <i>How to use</i> tells you how to get the tool on your phone, tablet or computer.</li>
     </ul></details>
     <p>Teaching model, not for clinical decisions. Vessel geometry is a simplified schematic; real depths vary with head size, age and anatomical variants. TCD velocities are mean flow velocities without angle correction; only the TCCS view adds an angle-corrected reading. The modelled values in variants and pathology are illustrative. The TCCS image is a schematic B-mode and colour Doppler built from the same model, not a recorded scan.</p>
     <p>Optional background MRI (temporal view, off by default): T2-weighted ICBM 2009c nonlinear symmetric template (Fonov et al., NeuroImage 2011), an oblique slice through the midbrain tilted 10° like the mesencephalic plane, aligned to the vessel model by the midbrain and the basal cisterns. Copyright (C) 1993–2004 Louis Collins, McConnell Brain Imaging Centre, Montreal Neurological Institute, McGill University; used with the permission granted by the copyright holders. The other views stay schematic.</p>
@@ -1792,7 +1797,7 @@ function syncToggles(){
   document.querySelectorAll('[data-cmap]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.cmap===S.cmap)));
   document.querySelectorAll('[data-wnd]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.wnd===S.wnd)));
   drawInset();$('tMri').setAttribute('aria-pressed',String(S.mri));$('tMeas').setAttribute('aria-pressed',String(S.meas));
-  $('condCtl').hidden=S.mode==='cases'||S.mode==='identify';$('condSel').value=S.exCond?S.exCond.id:'normal';
+  $('condCtl').hidden=S.mode==='cases'||S.mode==='identify';$('condSel').value=S.exCond?S.exCond.id:'normal';$('condSel').classList.toggle('on',!!S.exCond);
   $('lesCtl').hidden=$('condCtl').hidden||!S.exCond||noSide(S.exCond.id);grdUI();document.querySelectorAll('[data-les]').forEach(b=>b.setAttribute('aria-pressed',String(!!S.exCond&&b.dataset.les===S.exCond.aff)));
   const w=W();$('scrCap').textContent='TCD · '+(S.wnd==='foraminal'?'transforaminal':sideWord(S.side)+' '+(S.wnd==='orbital'?'orbit':S.wnd==='submand'?'submandibular':'temporal'))+' · 2 MHz';
   const tc=tccsOn();$('fcLeg').hidden=!(S.dir&&S.anat&&!tc);$('fcLeg').classList.toggle('left',S.wnd==='orbital');$('tTccs').hidden=!tccsWnd();$('tTccs').disabled=blindCase();$('tTccs').title=blindCase()?'TCCS opens after your diagnosis':'Duplex image (TCCS) with colour Doppler and angle correction';$('tTccs').setAttribute('aria-pressed',String(tc));svg.toggleAttribute('hidden',tc);fan.hidden=!tc;zoomUI();$('tMri').hidden=tc||S.wnd!=='temporal';$('scaleKnob').hidden=!tc;$('corrKnob').hidden=!tc;corrUI();
