@@ -1,0 +1,17 @@
+Transcranial Doppler Explorer
+Copyright (c) 2026 Senol Apaydin, MD. Created by Senol Apaydin, MD, built with the help of AI.
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0
+International License (CC BY-NC-ND 4.0). You may share it unchanged, with credit to the author,
+for non-commercial purposes; adapted versions and commercial use need the author's written permission.
+Licence summary: https://creativecommons.org/licenses/by-nc-nd/4.0/
+Legal code:      https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+
+Third-party material (keeps its own terms):
+The optional background MRI is a slice of the ICBM 2009c nonlinear symmetric T2 template
+(Fonov et al., NeuroImage 2011;54:313-327; NeuroImage 2009;47 Suppl 1:S102).
+Copyright (C) 1993-2004 Louis Collins, McConnell Brain Imaging Centre, Montreal Neurological
+Institute, McGill University. Used with the permission granted by the copyright holders;
+this notice must be kept in all copies.
+
+Teaching model, not for clinical decisions. Provided without warranty.

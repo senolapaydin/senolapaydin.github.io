@@ -9,13 +9,14 @@ Each tool runs in the browser, with nothing to install.
 |---|---|---|
 | Stroke Territory Explorer | [`stroke-explorer/`](stroke-explorer/) | Beta |
 | Willis Flow Explorer | – | In development |
-| Transcranial Doppler Explorer | – | In development |
+| Transcranial Doppler Explorer | [`transcranial-doppler-explorer/`](transcranial-doppler-explorer/) | Beta |
 | EMG Sound Trainer | – | In development |
 
 ## Licence
 
 Created by Senol Apaydin, MD, built with the help of AI.
 The start page and the Stroke Territory Explorer are licensed under the GNU General Public License v3.0 (see [LICENSE](LICENSE)).
+The Transcranial Doppler Explorer is licensed under CC BY-NC-ND 4.0 (see [its LICENSE](transcranial-doppler-explorer/LICENSE)); its optional background MRI is the ICBM 2009c template (McGill), under its own notice.
 Every tool states its own licence in its footer; the preview images of tools in development are covered by the licence of that tool, not by this repository's LICENSE.
 
 Additional terms under section 7 of the GPL-3.0 for the author's own code and texts:
